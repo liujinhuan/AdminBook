@@ -40,13 +40,7 @@ export default {
               }
           }
       ],
-      data: [
-          {
-              bookname: '平安日记',
-              bookprice: 18,
-              bookpublish: '广东省深圳市观澜平安金融学院'
-          }
-      ]
+      data: JSON.parse(window.localStorage.getItem("Books"))||[]
   }
   },
   methods: {

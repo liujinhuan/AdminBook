@@ -19,6 +19,7 @@
     export default {
         data () {
             return {
+                books:[],
                 formValidate: {
                     bookname: '',
                     bookprice: '',
@@ -40,14 +41,26 @@
         methods: {
             handleSubmit (name) {
                 var self = this;
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        this.$Message.success('提交成功!');
-                        self.$router.go(-1)
-                    } else {
-                        this.$Message.error('表单验证失败!');
-                    }
-                })
+
+                this.books = JSON.parse(window.localStorage.getItem("Books")) || [];
+                var book = {
+                    bookname: this.$data.formValidate.bookname,
+                    bookprice: this.$data.formValidate.bookprice,
+                    bookpublish: this.$data.formValidate.bookpublish
+                }
+                this.books.push(book);
+
+                window.localStorage.setItem("Books",JSON.stringify(this.books));
+                this.$Message.success('提交成功!');
+                this.$router.go(-1)
+                // this.$refs[name].validate((valid) => {
+                //     if (valid) {
+                //         this.$Message.success('提交成功!');
+                //         self.$router.go(-1)
+                //     } else {
+                //         this.$Message.error('表单验证失败!');
+                //     }
+                // })
             },
             handleReset (name) {
                 this.$refs[name].resetFields();

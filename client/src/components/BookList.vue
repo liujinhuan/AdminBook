@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import Store from './store';
 export default {
   name: 'BookList',
   data () {
@@ -40,7 +41,7 @@ export default {
               }
           }
       ],
-      data: JSON.parse(window.localStorage.getItem("Books"))||[]
+      data: Store.get()
   }
   },
   methods: {
@@ -51,7 +52,8 @@ export default {
         })
     },
     remove (index) {
-        this.data.splice(index, 1);
+      this.data.splice(index, 1);
+      Store.set(this.data);
     }
   }
 }

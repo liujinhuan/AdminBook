@@ -16,6 +16,7 @@
     </Form>
 </template>
 <script>
+    import Store from './store';
     export default {
         data () {
             return {
@@ -42,7 +43,8 @@
             handleSubmit (name) {
                 var self = this;
 
-                this.books = JSON.parse(window.localStorage.getItem("Books")) || [];
+                this.books = Store.get();
+
                 var book = {
                     bookname: this.$data.formValidate.bookname,
                     bookprice: this.$data.formValidate.bookprice,
@@ -50,7 +52,8 @@
                 }
                 this.books.push(book);
 
-                window.localStorage.setItem("Books",JSON.stringify(this.books));
+                Store.set(this.books);
+
                 this.$Message.success('提交成功!');
                 this.$router.go(-1)
                 // this.$refs[name].validate((valid) => {

@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <i-button @click="show">Click me!</i-button>
+    <i-button @click="show">首页
+    </i-button>
     <Modal v-model="visible" title="Welcome">欢迎使用 iView</Modal>    
   </div>
 </template>
@@ -14,7 +15,7 @@ export default {
     }
   },
   methods: {
-    show: function () {
+    show() {
       this.visible = true
     }
   }

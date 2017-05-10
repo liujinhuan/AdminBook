@@ -2,7 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import Book from './components/Book'
+import BookList from './components/BookList'
+import BookAdd from './components/BookAdd'
 import router from './router'
 
 import iView from 'iview'

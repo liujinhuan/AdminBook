@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import Book from '@/components/Book'
+import BookList from '@/components/BookList'
+import BookAdd from '@/components/BookAdd'
 
 Vue.use(Router)
 
@@ -10,12 +10,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      component: BookList
     },
     { 
-      path: '/book', 
-      component: Book 
+      path: '/bookadd', 
+      component: BookAdd 
     }
   ]
 })

@@ -2,6 +2,27 @@
     <div class="booklist">
       <Button @click="toAddBook"><!-- <router-link to="/bookadd">新增</router-link> -->新增图书</Button>
       <Table border size="small" :columns="columns" :data="data"></Table>
+      <Modal v-model="isShow" width="360">
+        <p slot="header" style="color:#f60;text-align:center">
+            <Icon type="information-circled"></Icon>
+            <span>提示</span>
+        </p>
+        <div style="text-align:center">
+            <p>{{ deleteMsg }}</p>
+        </div>
+        <div slot="footer">
+            <Button @click="deleteCancel">取消</Button>
+            <Button type="error"  @click="deleteSure">删除</Button>
+        </div>
+      </Modal>
+    <!-- </Modal>
+      <Modal
+        v-model="isShow"
+        title="提示"
+        @on-ok="deleteSure"
+        @on-cancel="deleteCancel">
+        <p v-model="deleteMsg"></p>
+     </Modal>-->
     </div>
 </template>
 
@@ -9,9 +30,13 @@
 import Store from './store';
 export default {
   name: 'BookList',
+  deleteMsg: '',
   data () {
     return {
       self: this,
+      isShow: false,
+      deleteMsg: '',
+      whichDelete:{},
       columns: [
           {
               title: '书名',
@@ -59,8 +84,15 @@ export default {
         })
     },
     remove (index) {
-      this.data.splice(index, 1);
-      Store.set(this.data);
+      this.isShow = true;
+      this.whichDelete = this.data[index];
+      this.deleteMsg = "确定删除《"+this.whichDelete.bookname+"》这本图书？";
+    },
+    deleteSure () {
+
+    },
+    deleteCancel () {
+      this.isShow = false;
     },
     toAddBook () {
       this.$router.push('/bookadd');

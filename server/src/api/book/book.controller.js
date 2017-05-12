@@ -2,7 +2,8 @@
 
 import config from '../../config';
 import { list } from './book.model';
-import { add } from './book.model';
+import { addBook } from './book.model';
+import { deleteBook } from './book.model';
 
 export async function booklist(ctx, next) {
   let data = await list()
@@ -14,7 +15,16 @@ export async function booklist(ctx, next) {
 
 export async function bookadd(ctx, next) {
 	var reqBook = ctx.request.body;
-   	let res = await add(reqBook);
+   	let res = await addBook(reqBook);
+  	ctx.status = 200;
+  	ctx.body = res;
+  	await next();
+}
+
+export async function bookdelete(ctx, next) {
+	console.log(ctx.request.body);
+	var bookid = ctx.request.body.id;
+   	let res = await deleteBook(bookid);
   	ctx.status = 200;
   	ctx.body = res;
   	await next();

@@ -15,14 +15,6 @@
             <Button type="error"  @click="deleteSure">删除</Button>
         </div>
       </Modal>
-    <!-- </Modal>
-      <Modal
-        v-model="isShow"
-        title="提示"
-        @on-ok="deleteSure"
-        @on-cancel="deleteCancel">
-        <p v-model="deleteMsg"></p>
-     </Modal>-->
     </div>
 </template>
 
@@ -37,6 +29,7 @@ export default {
       isShow: false,
       deleteMsg: '',
       whichDelete:{},
+      deleteIndex:'',
       columns: [
           {
               title: '书名',
@@ -66,14 +59,22 @@ export default {
               }
           }
       ],
-      data: Store.get()
+      data: []
     };
   },
   created () {
+    console.log("create");
+    var self = this;
     this.$http.get('http://localhost:9000/book/booklist').then(response => {
-      this.data = response.body
+      var res = response.body;
+      if(res.code!=0){
+        self.data = res.body;
+      }else{
+        self.$Message.error(res.message);
+      }
     }, response => {
-      
+      var res = response.body;
+      self.$Message.error(res.message);
     });
   },
   methods: {
@@ -85,11 +86,19 @@ export default {
     },
     remove (index) {
       this.isShow = true;
+      this.deleteIndex = index;
       this.whichDelete = this.data[index];
       this.deleteMsg = "确定删除《"+this.whichDelete.bookname+"》这本图书？";
     },
     deleteSure () {
-
+      var self = this;
+      this.$http.post('http://localhost:9000/book/bookdelete',{id:this.whichDelete._id}).then(response => {
+          self.$Message.success('删除成功!');
+          self.data.splice(self.deleteIndex,1);
+          self.isShow = false;
+      }, response => {
+          self.$Message.error(response.body.message);
+      });
     },
     deleteCancel () {
       this.isShow = false;

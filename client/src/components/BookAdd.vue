@@ -43,19 +43,24 @@
             handleSubmit (name) {
                 var self = this;
 
-                this.books = Store.get();
+                // this.books = Store.get();
 
                 var book = {
                     bookname: this.$data.formValidate.bookname,
                     bookprice: this.$data.formValidate.bookprice,
                     bookpublish: this.$data.formValidate.bookpublish
                 }
-                this.books.push(book);
+                // this.books.push(book);
 
-                Store.set(this.books);
+                // Store.set(this.books);
+                this.$http.post('http://localhost:9000/book/bookadd',book).then(response => {
+                    console.log(response.body);
+                    self.$Message.success('提交成功!');
+                    self.$router.go(-1)
+                }, response => {
+                    self.$Message.error(response.body.message);
+                });
 
-                this.$Message.success('提交成功!');
-                this.$router.go(-1)
                 // this.$refs[name].validate((valid) => {
                 //     if (valid) {
                 //         this.$Message.success('提交成功!');

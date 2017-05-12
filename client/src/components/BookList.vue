@@ -1,6 +1,6 @@
 <template>
     <div class="booklist">
-      <Button><router-link to="/bookadd">新增</router-link></Button>
+      <Button @click="toAddBook"><!-- <router-link to="/bookadd">新增</router-link> -->新增图书</Button>
       <Table border size="small" :columns="columns" :data="data"></Table>
     </div>
 </template>
@@ -42,7 +42,14 @@ export default {
           }
       ],
       data: Store.get()
-  }
+    };
+  },
+  created () {
+    this.$http.get('http://localhost:9000/book/booklist').then(response => {
+      this.data = response.body
+    }, response => {
+      
+    });
   },
   methods: {
     show (index) {
@@ -54,6 +61,9 @@ export default {
     remove (index) {
       this.data.splice(index, 1);
       Store.set(this.data);
+    },
+    toAddBook () {
+      this.$router.push('/bookadd');
     }
   }
 }

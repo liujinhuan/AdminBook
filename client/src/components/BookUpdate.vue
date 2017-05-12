@@ -45,11 +45,6 @@
         methods: {
             handleSubmit (name) {
                 var self = this;
-                // var book = {
-                //     bookname: this.$data.formValidate.bookname,
-                //     bookprice: this.$data.formValidate.bookprice,
-                //     bookpublish: this.$data.formValidate.bookpublish
-                // }
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         self.$http.post('http://localhost:9000/book/bookupdate',self.formValidate).then(response => {

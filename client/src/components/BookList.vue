@@ -1,8 +1,9 @@
 <template>
     <div class="booklist">
-      <Button @click="toAddBook"><!-- <router-link to="/bookadd">新增</router-link> -->新增图书</Button>
+      <Button @click="toAddBook">新增图书</Button>
       <Table border size="small" :columns="columns" :data="data"></Table>
-      <Modal v-model="isShow" width="360">
+      <!-- 确认删除对话框 -->
+      <Modal v-model="isShowDelDialog" width="360">
         <p slot="header" style="color:#f60;text-align:center">
             <Icon type="information-circled"></Icon>
             <span>提示</span>
@@ -13,6 +14,20 @@
         <div slot="footer">
             <Button @click="deleteCancel">取消</Button>
             <Button type="error"  @click="deleteSure">删除</Button>
+        </div>
+      </Modal>
+      <!-- 查看详情的对话框 -->
+      <Modal v-model="isShowDetailDialog" width="360">
+        <p slot="header" style="color:#f60;text-align:center">
+            <span>详情</span>
+        </p>
+        <div style="text-align:center">
+            <p>书&nbsp;名：{{ showDetailBook.bookname }}</p>
+            <p>价&nbsp;格：{{ showDetailBook.bookprice }}</p>
+            <p>出版社：{{ showDetailBook.bookpublish }}</p>
+        </div>
+        <div slot="footer">
+            <Button @click="isShowDetailDialog=false">OK</Button>
         </div>
       </Modal>
     </div>
@@ -26,10 +41,12 @@ export default {
   data () {
     return {
       self: this,
-      isShow: false,
+      isShowDelDialog: false,
+      isShowDetailDialog: false,
       deleteMsg: '',
       whichDelete:{},
       deleteIndex:'',
+      showDetailBook:{},
       columns: [
           {
               title: '书名',
@@ -79,13 +96,11 @@ export default {
   },
   methods: {
     show (index) {
-        this.$Modal.info({
-            title: '书籍信息',
-            content: `书名：${this.data[index].bookname}<br>价格：${this.data[index].bookprice}<br>出版社：${this.data[index].bookpublish}`
-        })
+      this.showDetailBook = this.data[index];
+      this.isShowDetailDialog = true;
     },
     remove (index) {
-      this.isShow = true;
+      this.isShowDelDialog = true;
       this.deleteIndex = index;
       this.whichDelete = this.data[index];
       this.deleteMsg = "确定删除《"+this.whichDelete.bookname+"》这本图书？";
@@ -95,13 +110,13 @@ export default {
       this.$http.post('http://localhost:9000/book/bookdelete',{id:this.whichDelete._id}).then(response => {
           self.$Message.success('删除成功!');
           self.data.splice(self.deleteIndex,1);
-          self.isShow = false;
+          self.isShowDelDialog = false;
       }, response => {
           self.$Message.error(response.body.message);
       });
     },
     deleteCancel () {
-      this.isShow = false;
+      this.isShowDelDialog = false;
     },
     update (index) {
       var updateBook = this.data[index];

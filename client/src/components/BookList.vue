@@ -72,7 +72,7 @@ export default {
               width: 200,
               align: 'center',
               render (row, column, index) {
-                  return `<i-button type="primary" size="small" @click="show(${index})">查看</i-button> <i-button type="info" size="small"  @click="update(${index})">修改</i-button> <i-button type="error" size="small" @click="remove(${index})">删除</i-button>`;
+                  return `<i-button type="primary" size="small" @click="show(${index})">详情</i-button> <i-button type="info" size="small"  @click="update(${index})">修改</i-button> <i-button type="error" size="small" @click="remove(${index})">删除</i-button>`;
               }
           }
       ],

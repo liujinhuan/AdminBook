@@ -18,7 +18,6 @@ export function list() {
   return new Promise((resolve) => {
     setTimeout(() => {
     	BookModel.find({isExist:1},function (err,docs) {
-    		// console.log(docs);
     		if(err){
     			resolve({code:0,message:"查询数据库出错"});
     		}else{
@@ -34,13 +33,29 @@ export function addBook(argumentbook) {
   return new Promise((resolve) => {
     setTimeout(() => {
     	var book = new BookModel(argumentbook);
-    	book.save(function (err) {
+    	var condition = {
+    		bookname:argumentbook.bookname,
+    		bookprice:argumentbook.bookprice,
+    		bookpublish:argumentbook.bookpublish,
+    		isExist:1
+    	};
+    	BookModel.find(condition,function (err,docs) {
+    		console.log(docs);
     		if(err){
     			resolve({code:0,message:"插入数据库出错"});
+    		}else if(docs.length!=0){
+    			resolve({code:0,message:"数据库存在同条数据"});
     		}else{
-    			resolve({code:1,message:"success"});
+    			book.save(function (err) {
+		    		if(err){
+		    			resolve({code:0,message:"插入数据库出错"});
+		    		}else{
+		    			resolve({code:1,message:"success"});
+		    		}
+		    	});
     		}
     	});
+    	
     });
   });
 }

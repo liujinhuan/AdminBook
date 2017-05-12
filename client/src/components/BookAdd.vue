@@ -11,7 +11,8 @@
         </Form-item>
         <Form-item>
             <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
-            <Button type="ghost" @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
+            <Button type="info" @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
+            <Button @click="back" style="margin-left: 8px">返回</Button>
         </Form-item>
     </Form>
 </template>
@@ -67,6 +68,9 @@
             },
             handleReset (name) {
                 this.$refs[name].resetFields();
+            },
+            back () {
+                this.$router.go(-1);    
             }
         }
     }

@@ -48,9 +48,13 @@
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         self.$http.post('http://localhost:9000/book/bookupdate',self.formValidate).then(response => {
-                            console.log(response.body);
-                            self.$Message.success('提交成功!');
-                            self.$router.go(-1)
+                            var res = response.body;
+                            if(res.code==1){
+                                self.$Message.success('修改成功!');
+                                self.$router.go(-1);
+                            }else{
+                                self.$Message.error(res.message);
+                            }
                         }, response => {
                             self.$Message.error(response.body.message);
                         });

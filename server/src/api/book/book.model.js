@@ -24,7 +24,6 @@ export function list() {
     			resolve({code:1,message:"success",body:docs});
     		}
     	});
-    	
     });
   });
 }
@@ -55,7 +54,6 @@ export function addBook(argumentbook) {
 		    	});
     		}
     	});
-    	
     });
   });
 }

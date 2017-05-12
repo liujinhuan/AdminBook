@@ -52,10 +52,10 @@ export default {
           {
               title: '操作',
               key: 'action',
-              width: 150,
+              width: 200,
               align: 'center',
               render (row, column, index) {
-                  return `<i-button type="primary" size="small" @click="show(${index})">查看</i-button> <i-button type="error" size="small" @click="remove(${index})">删除</i-button>`;
+                  return `<i-button type="primary" size="small" @click="show(${index})">查看</i-button> <i-button type="info" size="small"  @click="update(${index})">修改</i-button> <i-button type="error" size="small" @click="remove(${index})">删除</i-button>`;
               }
           }
       ],
@@ -102,6 +102,10 @@ export default {
     },
     deleteCancel () {
       this.isShow = false;
+    },
+    update (index) {
+      var updateBook = this.data[index];
+      this.$router.push({ name: 'bookupdate', params: { book:updateBook }});
     },
     toAddBook () {
       this.$router.push('/bookadd');

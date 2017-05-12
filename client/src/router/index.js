@@ -3,6 +3,7 @@ import Router from 'vue-router'
 // 引入页面
 import BookList from '@/components/BookList'
 import BookAdd from '@/components/BookAdd'
+import BookUpdate from '@/components/BookUpdate'
 
 // 引用中间件
 Vue.use(Router)
@@ -12,11 +13,18 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: '/',
       component: BookList
     },
     { 
       path: '/bookadd', 
+      name: 'bookadd',
       component: BookAdd 
+    },
+    { 
+      path: '/bookupdate', 
+      name: 'bookupdate',
+      component: BookUpdate
     }
   ]
 })

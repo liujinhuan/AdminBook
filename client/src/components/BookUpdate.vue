@@ -11,7 +11,7 @@
         </Form-item>
         <Form-item>
             <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
-            <Button type="ghost" @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
+            <Button type="ghost" @click="back" style="margin-left: 8px">返回</Button>
         </Form-item>
     </Form>
 </template>
@@ -39,17 +39,20 @@
                 }
             }
         },
+        created () {
+            this.formValidate = this.$route.params.book;
+        },
         methods: {
             handleSubmit (name) {
                 var self = this;
-                var book = {
-                    bookname: this.$data.formValidate.bookname,
-                    bookprice: this.$data.formValidate.bookprice,
-                    bookpublish: this.$data.formValidate.bookpublish
-                }
+                // var book = {
+                //     bookname: this.$data.formValidate.bookname,
+                //     bookprice: this.$data.formValidate.bookprice,
+                //     bookpublish: this.$data.formValidate.bookpublish
+                // }
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        this.$http.post('http://localhost:9000/book/bookadd',book).then(response => {
+                        self.$http.post('http://localhost:9000/book/bookupdate',self.formValidate).then(response => {
                             console.log(response.body);
                             self.$Message.success('提交成功!');
                             self.$router.go(-1)
@@ -57,12 +60,12 @@
                             self.$Message.error(response.body.message);
                         });
                     } else {
-                        this.$Message.error('表单验证失败!');
+                        self.$Message.error('表单验证失败!');
                     }
                 })
             },
-            handleReset (name) {
-                this.$refs[name].resetFields();
+            back () {
+                this.$router.go(-1);
             }
         }
     }

@@ -70,4 +70,5 @@ mongoose.Promise = global.Promise;
 npm i koa-bodyparser@next --save
 ```
 
++ 安装koa-cors,解决跨域
 

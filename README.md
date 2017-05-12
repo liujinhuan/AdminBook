@@ -57,10 +57,17 @@ npm i vue-resource --save
 
 ## 服务端
 
-+ mongoose
++ 安装mongoose，并在根目录下的index.js中链接数据库
 
-+ koa-bodyparser
+> 注意：mongoose在链接之后，需要指定Promise
 
-+ 
+```
+mongoose.Promise = global.Promise;
+```
+
++ 安装koa-bodyparser@next，并在`src/server.js`中引入中间件
+```
+npm i koa-bodyparser@next --save
+```
 
 

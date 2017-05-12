@@ -17,7 +17,7 @@
         </div>
       </Modal>
       <!-- 查看详情的对话框 -->
-      <Modal v-model="isShowDetailDialog" width="360">
+      <!-- <Modal v-model="isShowDetailDialog" width="360">
         <p slot="header" style="color:#f60;text-align:center">
             <span>详情</span>
         </p>
@@ -29,7 +29,7 @@
         <div slot="footer">
             <Button @click="isShowDetailDialog=false">OK</Button>
         </div>
-      </Modal>
+      </Modal> -->
     </div>
 </template>
 
@@ -85,6 +85,7 @@ export default {
     this.$http.get('http://localhost:9000/book/booklist').then(response => {
       var res = response.body;
       if(res.code!=0){
+        Store.set(res.body);
         self.data = res.body;
       }else{
         self.$Message.error(res.message);
@@ -96,8 +97,10 @@ export default {
   },
   methods: {
     show (index) {
-      this.showDetailBook = this.data[index];
-      this.isShowDetailDialog = true;
+      // this.showDetailBook = this.data[index];
+      // this.isShowDetailDialog = true;
+      // 改用详情页面的形式
+      this.$router.push({ name: 'bookdetail' , query: { bookid: this.data[index]._id }});
     },
     remove (index) {
       this.isShowDelDialog = true;

@@ -1,6 +1,6 @@
 <template>
     <div class="booklist">
-      <Button @click="toAddBook">新增图书</Button>
+      <!-- <Button @click="toAddBook">新增图书</Button> -->
       <Table border size="small" :columns="columns" :data="data"></Table>
       <!-- 确认删除对话框 -->
       <Modal v-model="isShowDelDialog" width="360">
@@ -134,5 +134,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .booklist{
+    padding: 20px;
+  }
 </style>

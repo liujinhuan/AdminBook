@@ -2,7 +2,7 @@
 	<div class="userdetail">
 		<div class="content-body">
 			<Row class-name="child-body">
-		        <Col span="8">用户&nbsp;&nbsp;&nbsp;&nbsp;名</Col>
+		        <Col span="8">用户名</Col>
 		        <Col >{{userinfo.username}}</Col>
 		    </Row>
 		</div>

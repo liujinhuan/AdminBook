@@ -76,7 +76,7 @@ export function updateuser(user) {
 export function deleteuser(userid) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      UserModel.findOneAndUpdate({isExist:0,_id:userid},function(err,docs){
+      UserModel.findOneAndUpdate({_id:userid},{isExist:0},function(err,docs){
       	if(err){
       		resolve({code:0,message:"删除用户失败"});
       	}else{

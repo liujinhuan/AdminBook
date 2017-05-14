@@ -33,6 +33,7 @@ export async function userupdate(ctx,next) {
 
 export async function userdelete(ctx,next) {
 	var userid = ctx.request.body.id;
+	console.log("controller----"+userid)
 	let data = await deleteuser(userid);
 	ctx.status = 200;
 	ctx.body = data;

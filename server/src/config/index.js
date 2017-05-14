@@ -10,7 +10,7 @@ const config = {
   logType: process.env.LOGTYPE || 'dev',
   mongoIp: 'localhost',
   mongoPort: 27017,
-  mongoDbName: 'bookadmin'
+  mongoDbName: 'management'
 };
 
 module.exports = config;

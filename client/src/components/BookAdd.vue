@@ -56,7 +56,8 @@
                             var res = response.body;
                             if(res.code==1){
                                 self.$Message.success('提交成功!');
-                                self.$router.go(-1)
+                                // self.$router.go(-2)
+                                self.$data.formValidate = {};
                             }else{
                                 self.$Message.error(res.message);
                             }

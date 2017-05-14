@@ -11,6 +11,14 @@
                         <Menu-item name="booklist">查看</Menu-item>
                         <Menu-item name="bookadd">添加</Menu-item>
                     </Submenu>
+                    <Submenu name="userManager">
+                        <template slot="title">
+                            <Icon type="ios-navigate"></Icon>
+                            用户管理
+                        </template>
+                        <Menu-item name="userlist">查看</Menu-item>
+                        <Menu-item name="useradd">添加</Menu-item>
+                    </Submenu>
                 </Menu>
             </i-col>
             <i-col span="19">
@@ -25,16 +33,12 @@
     </div>
 </template>
 <script>
-    import vAdd from '../bookadd'
-    import vList from '../booklist'
-    import vUpdate from '../bookupdate'
     export default {
         data () {
             return {
             }
         },
         components:{
-            vAdd,vList,vUpdate
         },
         methods : {
             onSelect (name){

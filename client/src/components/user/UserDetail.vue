@@ -1,17 +1,9 @@
 <template>
-	<div class="bookdetail">
+	<div class="userdetail">
 		<div class="content-body">
 			<Row class-name="child-body">
-		        <Col span="8">书&nbsp;&nbsp;&nbsp;&nbsp;名</Col>
-		        <Col >{{bookinfo.bookname}}</Col>
-		    </Row>
-		    <Row class-name="child-body">
-		       	<Col span="8">价&nbsp;&nbsp;&nbsp;&nbsp;格</Col>
-		        <Col span="16">{{bookinfo.bookprice}}</Col>
-		    </Row>
-		    <Row class-name="child-body">
-		       	<Col span="8">出版社</Col>
-		        <Col span="16">{{bookinfo.bookpublish}}</Col>
+		        <Col span="8">用户&nbsp;&nbsp;&nbsp;&nbsp;名</Col>
+		        <Col >{{userinfo.username}}</Col>
 		    </Row>
 		</div>
 	    <Button @click="back" style="margin-left: 8px">返回</Button>
@@ -22,15 +14,15 @@
 	export default {
 		data (){
 			return {
-				bookinfo:{}
+				userinfo:{}
 			}
 		},
 		created () {
-			var bookid = this.$route.query.bookid;
-			var data = Store.get("Books_Liuqiqi");
+			var userid = this.$route.query.userid;
+			var data = Store.get("Users_Liuqiqi");
 			for(var index in data){
-				if(data[index]._id === bookid){
-					this.bookinfo = data[index];
+				if(data[index]._id === userid){
+					this.userinfo = data[index];
 				}
 			}
 			
@@ -43,7 +35,7 @@
 	}
 </script>
 <style scoped>
-	.bookdetail{
+	.userdetail{
 		padding: 20px;
 		
 	}

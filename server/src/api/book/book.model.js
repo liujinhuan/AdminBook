@@ -39,7 +39,7 @@ export function addBook(argumentbook) {
     		isExist:1
     	};
     	BookModel.find(condition,function (err,docs) {
-    		console.log(docs);
+    		// console.log(docs);
     		if(err){
     			resolve({code:0,message:"插入数据库出错"});
     		}else if(docs.length!=0){

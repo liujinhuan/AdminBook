@@ -12,7 +12,7 @@ var UserSchema = new Schema({
 	username:String,
 	password:String
 });
-var UserModel = mongoose.model("UserModel",UserSchema) ;
+var UserModel = mongoose.model("Users",UserSchema) ;
 
 export function listuser() {
   return new Promise((resolve) => {
@@ -61,7 +61,8 @@ export function adduser(argumentuser) {
 export function updateuser(user) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      UserModel.update({_id:user.id,isExist:1},{username:user.username,password:user.password},function(err){
+      console.log("model----"+JSON.stringify(user))
+      UserModel.update({_id:user._id,isExist:1},{username:user.username,password:user.password},function(err){
       	if(err){
       		resolve({code:0,message:"修改用户失败"});
       	}else{

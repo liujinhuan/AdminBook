@@ -15,7 +15,7 @@ export async function userlist(ctx, next) {
 
 export async function useradd(ctx,next) {
 	var user = ctx.request.body;
-	console.log(user)
+	console.log("controller----"+user)
 	let data = await adduser(user);
 	ctx.status = 200;
 	ctx.body = data;
@@ -24,6 +24,7 @@ export async function useradd(ctx,next) {
 
 export async function userupdate(ctx,next) {
 	var user = ctx.request.body;
+	console.log("controller----"+user)
 	let data = await updateuser(user);
 	ctx.status = 200;
 	ctx.body = data;

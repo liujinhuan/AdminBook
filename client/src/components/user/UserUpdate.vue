@@ -1,14 +1,11 @@
 <template>
-    <div class="bookupdate">
+    <div class="userupdate">
         <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
-            <Form-item label="书名" prop="bookname">
-                <Input v-model="formValidate.bookname" placeholder="请输入书名"></Input>
+            <Form-item label="用户名" prop="username">
+                <Input v-model="formValidate.username" placeholder="请输入用户名"></Input>
             </Form-item>
-            <Form-item label="价格" prop="bookprice">
-                <Input v-model="formValidate.bookprice" placeholder="请输入价格"></Input>
-            </Form-item>
-            <Form-item label="出版社" prop="bookpublish">
-                <Input v-model="formValidate.bookpublish" placeholder="请输入出版社"></Input>
+            <Form-item label="密码" prop="password">
+                <Input v-model="formValidate.password" placeholder="请输入密码"></Input>
             </Form-item>
             <Form-item>
                 <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
@@ -22,34 +19,30 @@
     export default {
         data () {
             return {
-                books:[],
+                users:[],
                 formValidate: {
-                    bookname: '',
-                    bookprice: '',
-                    bookpublish: ''
+                    username: '',
+                    password: '',
                 },
                 ruleValidate: {
-                    bookname: [
-                        { required: true, message: '书名不能为空', trigger: 'blur' }
+                    username: [
+                        { required: true, message: '用户名不能为空', trigger: 'blur' }
                     ],
-                    bookprice: [
-                        { required: true, message: '价格不能为空', trigger: 'blur' }
-                    ],
-                    bookpublish: [
-                        { required: true, message: '出版社不能为空', trigger: 'blur' }
+                    password: [
+                        { required: true, message: '密码不能为空', trigger: 'blur' }
                     ]
                 }
             }
         },
         created () {
-            this.formValidate = this.$route.params.book;
+            this.formValidate = this.$route.params.user;
         },
         methods: {
             handleSubmit (name) {
                 var self = this;
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        self.$http.post('http://localhost:9000/book/bookupdate',self.formValidate).then(response => {
+                        self.$http.post('http://localhost:9000/user/userupdate',self.formValidate).then(response => {
                             var res = response.body;
                             if(res.code==1){
                                 self.$Message.success('修改成功!');

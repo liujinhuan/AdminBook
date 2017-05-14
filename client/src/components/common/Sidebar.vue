@@ -2,7 +2,7 @@
     <div class="layout">
         <Row type="flex">
             <i-col span="5" class="layout-menu-left">
-                <Menu active-name="booklist" theme="dark" width="auto" :open-names="['booklist','bookadd']" @on-select="onSelect">
+                <Menu active-name="booklist" theme="dark" width="auto" :open-names="['bookManager']" @on-select="onSelect">
                     <Submenu name="bookManager">
                         <template slot="title">
                             <Icon type="ios-navigate"></Icon>

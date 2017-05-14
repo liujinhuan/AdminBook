@@ -1,74 +1,61 @@
 # AdminBook
+
 > 基于Vue+Koa的图书管理系统
 
 ## 客户端
-> 采用Vue的前端框架，Vue.js的开源UI组件库等
 
-### 全局安装 vue-cli
+> 前端框架采用vue，通过脚手架`vue-cli`生成项目基础目录，融合iView UI框架，vue-router路由，vue-resource请求中间件等实现管理系统。各技术版本及说明如下：
 
-```
-npm install --global vue-cli
-```
+| Tech      | 版本   |   说明		|
+| ------------- |:-------------:|-------------:|
+|vue |	^2.2.6 	| vue版本 |
+|vue-router	| ^2.3.1	| vue路由中间件 |
+|vue-resource |	^1.3.1	| vue发送请求中间件 |
+|iView |^2.0.0-rc.12| UI框架|
 
-### 创建一个基于 webpack 模板的新项目
-
-```
-vue init webpack client
-```
-
-### 安装依赖
-
-```
-cd client
-npm install
-npm run dev
-```
-
-> 此时将自动打开http://localhost:8080/#/，看到的是HelloWorld标准模板，下面安装UI组件库iView
-
-### 安装iView
-
-```
-npm install iview --save
-```
-
-### 使用iView组件
-
-+ 在 webpack 入口页面 main.js 中如下配置：
-
-```
-import iView from 'iview'
-import 'iview/dist/styles/iview.css'   // 使用 CSS
-
-Vue.use(iView);
-```
-
-+ 打开src/components/Hello.vue，引入i-button和Modal组件。点击页面中的clickme，即可弹出对话框。
-
-### 关于请求
-
-+ 安装vue-resource
-
-```
-npm i vue-resource --save
-```
-
-+ 在main.js中引用
 
 ## 服务端
 
-+ 安装mongoose，并在根目录下的index.js中链接数据库
+> 后端采用koa框架，通过脚手架`generator-koa2-rest`生成项目基础目录，融合mongodb数据库，koa-router路由，koa-cors跨域处理，koa-bodyparser post请求处理等中间件实现管理后台服务端。各技术版本及说明如下：
 
-> 注意：mongoose在链接之后，需要指定Promise
+| Tech      | 版本   |   说明		|
+| ------------- |:-------------:|-------------:|
+|koa |	^2.0.0 	| koa版本 |
+|mongoose | ^4.9.9 | mongodb数据库 |
+|koa-bodyparser	| ^3.2.0	| http-post请求参数处理中间件 |
+|koa-cors |	0.0.16	| koa跨域请求中间件 |
+|koa-router |^7.0.1| 请求路由中间件 |
+
+
+## 项目运行
+
++ 克隆项目代码到本地
+
++ 进入client和server目录安装项目依赖
 
 ```
-mongoose.Promise = global.Promise;
+cd client && npm install
+cd server && npm install
 ```
 
-+ 安装koa-bodyparser@next，并在`src/server.js`中引入中间件
++ 分别启动本地服务
+
 ```
-npm i koa-bodyparser@next --save
+cd client && npm run dev
+cd server && npm start
 ```
 
-+ 安装koa-cors,解决跨域
++ 浏览器打开客户端进行操作
+
+```
+http://localhost:8080/
+```
+
+## 关于项目
+
+> 我会在另外一篇正在筹备中的Git主页文章中详细介绍此项目，如有疑问，欢迎交流。
+
+
+
+
 

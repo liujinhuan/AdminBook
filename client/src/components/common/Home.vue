@@ -2,9 +2,6 @@
     <div class="wrapper">
         <v-head></v-head>
         <v-sidebar></v-sidebar>
-        <!-- <div class="content">
-            <router-view></router-view>
-        </div> -->
     </div>
 </template>
 
@@ -17,3 +14,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .content{
+        min-height: 400px;
+    }
+</style>

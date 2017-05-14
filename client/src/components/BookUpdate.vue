@@ -1,19 +1,21 @@
 <template>
-    <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
-        <Form-item label="书名" prop="bookname">
-            <Input v-model="formValidate.bookname" placeholder="请输入书名"></Input>
-        </Form-item>
-        <Form-item label="价格" prop="bookprice">
-            <Input v-model="formValidate.bookprice" placeholder="请输入价格"></Input>
-        </Form-item>
-        <Form-item label="出版社" prop="bookpublish">
-            <Input v-model="formValidate.bookpublish" placeholder="请输入出版社"></Input>
-        </Form-item>
-        <Form-item>
-            <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
-            <Button type="ghost" @click="back" style="margin-left: 8px">返回</Button>
-        </Form-item>
-    </Form>
+    <div class="bookupdate">
+        <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
+            <Form-item label="书名" prop="bookname">
+                <Input v-model="formValidate.bookname" placeholder="请输入书名"></Input>
+            </Form-item>
+            <Form-item label="价格" prop="bookprice">
+                <Input v-model="formValidate.bookprice" placeholder="请输入价格"></Input>
+            </Form-item>
+            <Form-item label="出版社" prop="bookpublish">
+                <Input v-model="formValidate.bookpublish" placeholder="请输入出版社"></Input>
+            </Form-item>
+            <Form-item>
+                <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
+                <Button type="ghost" @click="back" style="margin-left: 8px">返回</Button>
+            </Form-item>
+        </Form>
+    </div>
 </template>
 <script>
     import Store from './store';
@@ -69,3 +71,8 @@
         }
     }
 </script>
+<style scoped>
+    .bookupdate{
+        padding: 20px;
+    }
+</style>

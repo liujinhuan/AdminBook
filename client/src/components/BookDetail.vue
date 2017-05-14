@@ -40,6 +40,8 @@
 		}
 	}
 </script>
-<style>
-	
+<style scoped>
+	.bookdetail{
+		padding: 20px;
+	}
 </style>

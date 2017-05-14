@@ -1,14 +1,60 @@
+<template>
+    <div class="layout">
+        <Row type="flex">
+            <i-col span="5" class="layout-menu-left">
+                <Menu active-name="booklist" theme="dark" width="auto" :open-names="['booklist','bookadd']" @on-select="onSelect">
+                    <Submenu name="bookManager">
+                        <template slot="title">
+                            <Icon type="ios-navigate"></Icon>
+                            图书管理
+                        </template>
+                        <Menu-item name="booklist">查看</Menu-item>
+                        <Menu-item name="bookadd">添加</Menu-item>
+                    </Submenu>
+                </Menu>
+            </i-col>
+            <i-col span="19">
+                <div class="layout-content">
+                    <router-view></router-view>
+                </div>
+                <div class="layout-copy">
+                    2011-2017 &copy; AdminBook
+                </div>
+            </i-col>
+        </Row>
+    </div>
+</template>
+<script>
+    import vAdd from '../bookadd'
+    import vList from '../booklist'
+    import vUpdate from '../bookupdate'
+    export default {
+        data () {
+            return {
+            }
+        },
+        components:{
+            vAdd,vList,vUpdate
+        },
+        methods : {
+            onSelect (name){
+                this.$router.push({path:name});
+            } 
+        }
+    }
+</script>
 <style scoped>
     .layout{
         /*border: 1px solid #d7dde4;*/
         background: #f5f7f9;
         position: relative;
+        height: 100%;
     }
     .layout-breadcrumb{
         padding: 10px 15px 0;
     }
     .layout-content{
-        min-height: 400px;
+        min-height: 500px;
         margin: 15px;
         overflow: hidden;
         background: #fff;
@@ -38,47 +84,3 @@
         margin: 15px auto;
     }
 </style>
-<template>
-    <div class="layout">
-        <Row type="flex">
-            <i-col span="5" class="layout-menu-left">
-                <Menu active-name="booklist" theme="dark" width="auto" :open-names="['1']" @on-select="onSelect">
-                    <Submenu name="1">
-                        <template slot="title">
-                            <Icon type="ios-navigate"></Icon>
-                            图书管理
-                        </template>
-                        <Menu-item name="booklist">查看</Menu-item>
-                        <Menu-item name="bookadd">添加</Menu-item>
-                    </Submenu>
-                </Menu>
-            </i-col>
-            <i-col span="19">
-                <router-view></router-view>
-                <div class="layout-copy">
-                    2011-2017 &copy; AdminBook
-                </div>
-            </i-col>
-        </Row>
-    </div>
-</template>
-<script>
-    import vAdd from '../bookadd'
-    import vList from '../booklist'
-    import vUpdate from '../bookupdate'
-    export default {
-        data () {
-            return {
-            }
-        },
-        components:{
-            vAdd,vList,vUpdate
-        },
-        methods : {
-            onSelect (name){
-                this.$router.push(name);
-                
-            } 
-        }
-    }
-</script>

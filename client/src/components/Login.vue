@@ -19,6 +19,7 @@
     </div>
 </template>
 <script>
+	import Store from './store'
     export default {
         data () {
             const validateUsername = (rule, value, callback) => {
@@ -53,9 +54,11 @@
         },
         methods: {
             handleSubmit (name) {
+            	var self = this;
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         // this.$Message.success('提交成功!');
+                        Store.set("Username",self.formCustom.username);
                         this.$router.push('/home');
                     } else {
                         this.$Message.error('表单验证失败!');
@@ -71,6 +74,5 @@
 	    top: 33%;
 	    left: 33%;
 	    position: absolute;
-		
 	}
 </style>

@@ -22,14 +22,31 @@
 <template>
     <div class="layout">
         <div class="layout-ceiling">
-            <div class="layout-ceiling-main">
-                <a href="#">注册登录</a>
+            <div class="layout-ceiling-main" v-if="isShowLogout">
+                <a>{{ username }}</a> |
+                <a @click="logout">退出</a>
             </div>
         </div>
     </div>
 </template>
 <script>
+    import Store from '../store'
     export default {
+        data () {
+            return {
+                isShowLogout:false,
+                username:""
+            }
+        },
+        created () {
+            this.username = Store.get("Username");
+            this.isShowLogout = this.username===""?false:true;
+        },
+        methods:{
+            logout () {
+                this.$router.push("/");
+            }
+        }
 
     }
 </script>

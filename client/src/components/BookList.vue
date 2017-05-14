@@ -86,7 +86,7 @@ export default {
     this.$http.get('http://localhost:9000/book/booklist').then(response => {
       var res = response.body;
       if(res.code!=0){
-        Store.set(res.body);
+        Store.set("Books_Liuqiqi",res.body);
         self.data = res.body;
       }else{
         self.$Message.error(res.message);

@@ -27,7 +27,7 @@
 		},
 		created () {
 			var bookid = this.$route.query.bookid;
-			var data = Store.get();
+			var data = Store.get("Books_Liuqiqi");
 			for(var index in data){
 				if(data[index]._id === bookid){
 					this.bookinfo = data[index];

@@ -1,10 +1,10 @@
-const Book_Key = "Books_Liuqiqi";
+// const Book_Key = "Books_Liuqiqi";
 
 export default {
-	get () {
-		return JSON.parse(window.localStorage.getItem(Book_Key))||[]
+	get (key) {
+		return JSON.parse(window.localStorage.getItem(key))||[]
 	},
-	set (data) {
-		window.localStorage.setItem(Book_Key,JSON.stringify(data));
+	set (key,data) {
+		window.localStorage.setItem(key,JSON.stringify(data));
 	}
 }

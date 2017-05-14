@@ -17,7 +17,7 @@
         </div>
       </Modal>
       <!-- 查看详情的对话框 -->
-      <!-- <Modal v-model="isShowDetailDialog" width="360">
+      <Modal v-model="isShowDetailDialog" width="360">
         <p slot="header" style="color:#f60;text-align:center">
             <span>详情</span>
         </p>
@@ -29,7 +29,7 @@
         <div slot="footer">
             <Button @click="isShowDetailDialog=false">OK</Button>
         </div>
-      </Modal> -->
+      </Modal>
 
     </div>
 </template>

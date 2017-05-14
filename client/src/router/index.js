@@ -6,6 +6,7 @@ import BookList from '@/components/BookList'
 import BookAdd from '@/components/BookAdd'
 import BookUpdate from '@/components/BookUpdate'
 import BookDetail from '@/components/BookDetail'
+import Login from '@/components/Login'
 
 // 引用中间件
 Vue.use(Router)
@@ -14,8 +15,8 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
-      name: '/',
+      path: '/home',
+      name: 'home',
       component: Home,
       children: [
         {
@@ -45,7 +46,11 @@ export default new Router({
         }
       ]
     },
-    
+    {
+      path: '/',
+      name: 'login',
+      component: Login
+    }
 
   ]
 })

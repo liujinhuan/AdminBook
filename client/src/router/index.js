@@ -5,10 +5,10 @@ import Home from '@/components/common/Home'
 // 登录
 import Login from '@/components/Login'
 // 图书
-import BookList from '@/components/BookList'
-import BookAdd from '@/components/BookAdd'
-import BookUpdate from '@/components/BookUpdate'
-import BookDetail from '@/components/BookDetail'
+import BookList from '@/components/book/BookList'
+import BookAdd from '@/components/book/BookAdd'
+import BookUpdate from '@/components/book/BookUpdate'
+import BookDetail from '@/components/book/BookDetail'
 // 用户
 import UserList from '@/components/user/UserList'
 import UserAdd from '@/components/user/UserAdd'

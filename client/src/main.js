@@ -3,8 +3,6 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import App from './App'
-import BookList from './components/BookList'
-import BookAdd from './components/BookAdd'
 import router from './router'
 
 import iView from 'iview'

@@ -7,10 +7,10 @@
 	        </Form-item>
 	        <Form-item label="密码" prop="password">
 	            <Input type="password" v-model="formCustom.password"></Input>
-	        </Form-item>
+	        </Form-item><!-- 
 	        <Form-item label="提示">
-	            目前用户名和密码可以随便输入
-	        </Form-item>
+	            admin/admin为管理员身份，其余为普通用户
+	        </Form-item> -->
 	        <Form-item>
 	            <Button type="primary" @click="handleSubmit('formCustom')">提交</Button>
 	        </Form-item>
@@ -57,9 +57,18 @@
             	var self = this;
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        // this.$Message.success('提交成功!');
-                        Store.set("Username",self.formCustom.username);
-                        this.$router.push('/home');
+                        // this.$http.post("http://localhost:9000/login/login",user).then(response=>{
+                        //     console.log(response.body);
+                        //     var res = response.body;
+                        //     if(res.code==1){
+                                Store.set("Username",self.formCustom.username);
+                                this.$router.push('/home');
+                        //     }else{
+                        //         this.$Message.error(res.message);
+                        //     }
+                        // },response=>{
+                        //     this.$Message.error(response.body.message);
+                        // });
                     } else {
                         this.$Message.error('表单验证失败!');
                     }

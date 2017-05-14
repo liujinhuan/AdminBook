@@ -1,5 +1,5 @@
 <template>
-    <div class="bookadd">
+    <div class="bookupdate">
         <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
             <Form-item label="书名" prop="bookname">
                 <Input v-model="formValidate.bookname" placeholder="请输入书名"></Input>
@@ -12,14 +12,13 @@
             </Form-item>
             <Form-item>
                 <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
-                <Button type="info" @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
-                <!-- <Button @click="back" style="margin-left: 8px">返回</Button> -->
+                <Button type="ghost" @click="back" style="margin-left: 8px">返回</Button>
             </Form-item>
         </Form>
     </div>
 </template>
 <script>
-    import Store from './store';
+    import Store from '../store';
     export default {
         data () {
             return {
@@ -42,22 +41,19 @@
                 }
             }
         },
+        created () {
+            this.formValidate = this.$route.params.book;
+        },
         methods: {
             handleSubmit (name) {
                 var self = this;
-                var book = {
-                    bookname: this.$data.formValidate.bookname,
-                    bookprice: this.$data.formValidate.bookprice,
-                    bookpublish: this.$data.formValidate.bookpublish
-                }
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        this.$http.post('http://localhost:9000/book/bookadd',book).then(response => {
+                        self.$http.post('http://localhost:9000/book/bookupdate',self.formValidate).then(response => {
                             var res = response.body;
                             if(res.code==1){
-                                self.$Message.success('提交成功!');
-                                // self.$router.go(-2)
-                                self.$data.formValidate = {};
+                                self.$Message.success('修改成功!');
+                                self.$router.go(-1);
                             }else{
                                 self.$Message.error(res.message);
                             }
@@ -65,21 +61,18 @@
                             self.$Message.error(response.body.message);
                         });
                     } else {
-                        this.$Message.error('表单验证失败!');
+                        self.$Message.error('表单验证失败!');
                     }
                 })
             },
-            handleReset (name) {
-                this.$refs[name].resetFields();
-            },
             back () {
-                this.$router.go(-1);    
+                this.$router.go(-1);
             }
         }
     }
 </script>
 <style scoped>
-    .bookadd{
+    .bookupdate{
         padding: 20px;
     }
 </style>

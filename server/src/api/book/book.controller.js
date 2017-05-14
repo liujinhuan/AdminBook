@@ -16,23 +16,23 @@ export async function booklist(ctx, next) {
 
 export async function bookadd(ctx, next) {
 	var reqBook = ctx.request.body;
-   	let res = await addBook(reqBook);
-  	ctx.status = 200;
-  	ctx.body = res;
-  	await next();
+ 	let res = await addBook(reqBook);
+	ctx.status = 200;
+	ctx.body = res;
+	await next();
 }
 
 export async function bookdelete(ctx, next) {
-	console.log(ctx.request.body);
+	// console.log(ctx.request.body);
 	var bookid = ctx.request.body.id;
-   	let res = await deleteBook(bookid);
-  	ctx.status = 200;
-  	ctx.body = res;
-  	await next();
+ 	let res = await deleteBook(bookid);
+	ctx.status = 200;
+	ctx.body = res;
+	await next();
 }
 
 export async function bookupdate(ctx, next) {
-	console.log(ctx.request.body);
+	// console.log(ctx.request.body);
 	var book = ctx.request.body;
    	let res = await updateBook(book);
   	ctx.status = 200;

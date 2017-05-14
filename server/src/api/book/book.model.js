@@ -76,7 +76,7 @@ export function deleteBook(bookid) {
 export function updateBook(book) {
   return new Promise((resolve) => {
     setTimeout(() => {
-    	BookModel.update({_id:book._id},{bookname:book.bookname,bookprice:book.bookprice,bookpublish:book.bookpublish},function (err,docs) {
+    	BookModel.update({_id:book._id,isExist:1},{bookname:book.bookname,bookprice:book.bookprice,bookpublish:book.bookpublish},function (err,docs) {
     		if(err){
     			resolve({code:0,message:"修改数据库出错"});
     		}else{

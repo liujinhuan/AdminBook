@@ -53,7 +53,7 @@
             }
         },
         created () {
-            this.formCustom = Store.get("UserInfo") || {};
+            this.formCustom.username = Store.get("UserInfo").username || "";
         },
         methods: {
             handleSubmit (name) {
@@ -65,7 +65,7 @@
                             var res = response.body;
                             if(res.code==1){
                                 this.$Notice.open({
-                                    title: "登录成功，已为您保存用户名密码",
+                                    title: "登录成功，已为您保存用户名",
                                     duration:1
                                 });
                                 // this.$Message.success();

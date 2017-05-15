@@ -19,7 +19,8 @@
     </div>
 </template>
 <script>
-	import Store from './store'
+	import Store from '@/utils/store'
+    import Url from '@/utils/url'
     export default {
         data () {
             const validateUsername = (rule, value, callback) => {
@@ -60,7 +61,7 @@
             	var self = this;
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        this.$http.post("http://localhost:9000/login/login",this.formCustom).then(response=>{
+                        this.$http.post(Url.login,this.formCustom).then(response=>{
                             console.log(response.body);
                             var res = response.body;
                             if(res.code==1){

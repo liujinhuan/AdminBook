@@ -8,7 +8,7 @@ const config = {
   ip: process.env.IP || 'localhost',
   port: process.env.PORT || 9000,
   logType: process.env.LOGTYPE || 'dev',
-  mongoIp: 'localhost',
+  mongoIp: process.env.IP || 'localhost',
   mongoPort: 27017,
   mongoDbName: 'management'
 };

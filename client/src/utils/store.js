@@ -1,4 +1,3 @@
-// const Book_Key = "Books_Liuqiqi";
 
 export default {
 	get (key) {

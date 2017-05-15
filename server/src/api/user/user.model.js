@@ -37,8 +37,8 @@ export function adduser(argumentuser) {
   return new Promise((resolve) => {
     setTimeout(() => {
       const user = new UserModel(argumentuser);
-      console.log("model----"+argumentuser);
-      console.log("model----"+user);
+      // console.log("model----"+argumentuser);
+      // console.log("model----"+user);
       const condition = {
       	isExist:1,
       	username:argumentuser.username
@@ -65,7 +65,7 @@ export function adduser(argumentuser) {
 export function updateuser(user) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      console.log("model----"+JSON.stringify(user))
+      // console.log("model----"+JSON.stringify(user))
       UserModel.update({_id:user._id,isExist:1},{username:user.username,password:user.password},function(err){
       	if(err){
       		resolve({code:0,message:"修改用户失败"});

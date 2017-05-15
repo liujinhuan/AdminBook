@@ -35,7 +35,8 @@
 </template>
 
 <script>
-import Store from '../store';
+import Store from '@/utils/store'
+import Url from '@/utils/url'
 export default {
   name: 'BookList',
   deleteMsg: '',
@@ -83,7 +84,7 @@ export default {
   created () {
     console.log("create");
     var self = this;
-    this.$http.get('http://localhost:9000/book/booklist').then(response => {
+    this.$http.get(Url.booklist).then(response => {
       var res = response.body;
       if(res.code!=0){
         Store.set("Books_Liuqiqi",res.body);
@@ -111,7 +112,7 @@ export default {
     },
     deleteSure () {
       var self = this;
-      this.$http.post('http://localhost:9000/book/bookdelete',{id:this.whichDelete._id}).then(response => {
+      this.$http.post(Url.bookdelete,{id:this.whichDelete._id}).then(response => {
           self.$Message.success('删除成功!');
           self.data.splice(self.deleteIndex,1);
           self.isShowDelDialog = false;

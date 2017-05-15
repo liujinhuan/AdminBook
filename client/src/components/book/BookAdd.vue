@@ -19,7 +19,8 @@
     </div>
 </template>
 <script>
-    import Store from '../store';
+    import Store from '@/utils/store'
+    import Url from '@/utils/url'
     export default {
         data () {
             return {
@@ -52,7 +53,7 @@
                 }
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        this.$http.post('http://localhost:9000/book/bookadd',book).then(response => {
+                        this.$http.post(Url.bookadd,book).then(response => {
                             var res = response.body;
                             if(res.code==1){
                                 self.$Message.success('提交成功!');

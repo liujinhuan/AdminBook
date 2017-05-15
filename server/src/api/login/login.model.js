@@ -5,7 +5,7 @@ import config from '../../config';
 export function toLoginByPwd(argumentUser) {
   return new Promise((resolve) => {
     setTimeout(() => {
-    	console.log(argumentUser);
+    	// console.log(argumentUser);
     	config.UserModel.find({isExist:1,username:argumentUser.username,password:argumentUser.password},function(err,docs){
     		if(err){
     			resolve({code:0,message:"查询用户信息出错"});

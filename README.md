@@ -1,6 +1,6 @@
 # AdminBook
 
-> 基于Vue+Koa的图书管理系统
+> 基于Vue+iView+Koa的管理系统，包括用户与图书管理。旨在综合运用前后端框架。
 
 ## 客户端
 
@@ -20,6 +20,7 @@
 
 | Tech      | 版本   |   说明		|
 | ------------- |:-------------:|-------------:|
+| generator-koa2-rest | | 后端项目生成脚手架,依赖koa@next |
 |koa |	^2.0.0 	| koa版本 |
 |mongoose | ^4.9.9 | mongodb数据库 |
 |koa-bodyparser	| ^3.2.0	| http-post请求参数处理中间件 |

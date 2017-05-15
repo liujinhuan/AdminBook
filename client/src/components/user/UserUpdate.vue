@@ -15,7 +15,8 @@
     </div>
 </template>
 <script>
-    import Store from '../store';
+    import Store from '@/utils/store'
+    import Url from '@/utils/url'
     export default {
         data () {
             return {
@@ -42,7 +43,7 @@
                 var self = this;
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        self.$http.post('http://localhost:9000/user/userupdate',self.formValidate).then(response => {
+                        self.$http.post(Url.userupdate,self.formValidate).then(response => {
                             var res = response.body;
                             if(res.code==1){
                                 self.$Message.success('修改成功!');

@@ -18,7 +18,8 @@
     </div>
 </template>
 <script>
-    import Store from '../store';
+    import Store from '@/utils/store'
+    import Url from '@/utils/url'
     export default {
         data () {
             return {

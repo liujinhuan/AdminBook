@@ -4,9 +4,11 @@ import config from './index';
 import morgan from 'koa-morgan';
 import parser from 'koa-bodyparser';
 import compress from 'koa-compress';
+import cors from 'koa-cors';
 
 export default function configKoa(app) {
   app.use(compress());
+  app.use(cors());
   app.use(parser({
     strict: false
   }));

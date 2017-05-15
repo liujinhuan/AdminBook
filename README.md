@@ -56,71 +56,71 @@ http://localhost:8080/
 
 > Client
 
-|-- build                            	// webpack配置文件
-|-- config                           	// 项目打包路径
-|-- src                              	// 源码目录
-|   |-- assets                   	    // 静态资源
-|   |-- components                   	// 组件
-|       |-- common                   	// 公共组件
-|           |-- Header.vue           	// 顶部组件
-|           |-- Home.vue           		// 公共路由入口
-|           |-- Sidebar.vue          	// 左侧菜单栏
-|		|-- book                   	 	// 主要图书路由页面
-|           |-- BookAdd.vue       	 	// 图书添加页面
-|           |-- BookDetail.vue       	// 图书详情页面
-|           |-- BookList.vue         	// 图书列表页面
-|           |-- BookUpdate.vue       	// 图书信息修改页面
-|		|-- user                   	 	// 主要用户路由页面
-|           |-- UserAdd.vue          	// 用户添加页面
-|           |-- UserDetail.vue       	// 用户详情查看页面
-|           |-- UserList.vue         	// 用户列表页面
-|           |-- UserUpdate.vue       	// 用户信息修改页面
-|		|-- Login.Vue                	// 登录页面
-|   |-- router                   	 	// 页面路由
-|		|-- index.js                 	// 页面路由配置入口
-|   |-- utils                   	 	// 工具
-|		|-- store.js                 	// 本地存储类
-|		|-- url.js                   	// 请求路径类
-|   |-- App.vue                      	// 页面入口文件
-|   |-- main.js                      	// 程序入口文件，加载各种中间件
-|-- .babelrc                         	// ES6语法编译配置
-|-- .editorconfig                    	// 代码编写规格
-|-- .gitignore                       	// 忽略的文件
-|-- index.html                       	// 入口html文件
-|-- package.json                     	// 项目及工具的依赖配置文件
-|-- README.md                        	// 说明
+	|-- build                            // webpack配置文件
+	|-- config                           // 项目打包路径
+	|-- src                              // 源码目录
+	|   |-- assets                   	 // 静态资源
+	|   |-- components                   // 组件
+	|       |-- common                   // 公共组件
+	|           |-- Header.vue           // 顶部组件
+	|           |-- Home.vue           	 // 公共路由入口
+	|           |-- Sidebar.vue          // 左侧菜单栏
+	|		|-- book                   	 // 主要图书路由页面
+	|           |-- BookAdd.vue       	 // 图书添加页面
+	|           |-- BookDetail.vue       // 图书详情页面
+	|           |-- BookList.vue         // 图书列表页面
+	|           |-- BookUpdate.vue       // 图书信息修改页面
+	|		|-- user                   	 // 主要用户路由页面
+	|           |-- UserAdd.vue          // 用户添加页面
+	|           |-- UserDetail.vue       // 用户详情查看页面
+	|           |-- UserList.vue         // 用户列表页面
+	|           |-- UserUpdate.vue       // 用户信息修改页面
+	|		|-- Login.Vue                // 登录页面
+	|   |-- router                   	 // 页面路由
+	|		|-- index.js                 // 页面路由配置入口
+	|   |-- utils                   	 // 工具
+	|		|-- store.js                 // 本地存储类
+	|		|-- url.js                   // 请求路径类
+	|   |-- App.vue                      // 页面入口文件
+	|   |-- main.js                      // 程序入口文件，加载各种中间件
+	|-- .babelrc                         // ES6语法编译配置
+	|-- .editorconfig                    // 代码编写规格
+	|-- .gitignore                       // 忽略的文件
+	|-- index.html                       // 入口html文件
+	|-- package.json                     // 项目及工具的依赖配置文件
+	|-- README.md                        // 说明
 
 > Server
 
-|-- test                             		// 测试目录
-|-- src                              		// 源码目录
-|   |-- server.js                    		// 后台配置入口文件，引入各类中间件
-|   |-- api                   		 		// 组件
-|       |-- book                     		// book
-|           |-- book.controller.js   		// book controller
-|           |-- book.model.js        		// book model
-|           |-- index.js             		// 基础路由配置文件
-|       |-- login                    		// login
-|           |-- login.controller.js  		// login controller
-|           |-- login.model.js       		// login model
-|           |-- index.js             		// 基础路由配置文件
-|       |-- user                     		// user
-|           |-- user.controller.js   		// user controller
-|           |-- user.model.js        		// user model
-|           |-- index.js             		// 基础路由配置文件
-|       |-- root                     		// root
-|           |-- root.controller.js   		// root controller
-|           |-- root.model.js        		// root model
-|           |-- index.js             		// 基础路由配置文件
-|		|-- index.js                 		// 路由入口
-|   |-- config                   	 		// 页面路由
-|		|-- index.js                 		// 各种端口，IP等的配置文件
-|		|-- koa.js                   		// koa配置文件
-|		|-- routes.js                		// 请求接口基础路由
-|-- .editorconfig                    		// 代码编写规格
-|-- .gitignore                       		// 忽略的文件
-|-- index.js                         		// 服务端入口文件
-|-- package.json                     		// 项目及工具的依赖配置文件
+	|-- test                             // 测试目录
+	|-- src                              // 源码目录
+	|   |-- server.js                    // 后台配置入口文件，引入各类中间件
+	|   |-- api                   		 // 组件
+	|       |-- book                     // book
+	|           |-- book.controller.js   // book controller
+	|           |-- book.model.js        // book model
+	|           |-- index.js             // 基础路由配置文件
+	|       |-- login                    // login
+	|           |-- login.controller.js  // login controller
+	|           |-- login.model.js       // login model
+	|           |-- index.js             // 基础路由配置文件
+	|       |-- user                     // user
+	|           |-- user.controller.js   // user controller
+	|           |-- user.model.js        // user model
+	|           |-- index.js             // 基础路由配置文件
+	|       |-- root                     // root
+	|           |-- root.controller.js   // root controller
+	|           |-- root.model.js        // root model
+	|           |-- index.js             // 基础路由配置文件
+	|		|-- index.js                 // 路由入口
+	|   |-- config                   	 // 页面路由
+	|		|-- index.js                 // 各种端口，IP等的配置文件
+	|		|-- koa.js                   // koa配置文件
+	|		|-- routes.js                // 请求接口基础路由
+	|-- .editorconfig                    // 代码编写规格
+	|-- .gitignore                       // 忽略的文件
+	|-- index.js                         // 服务端入口文件
+	|-- package.json                     // 项目及工具的依赖配置文件
 
 
 

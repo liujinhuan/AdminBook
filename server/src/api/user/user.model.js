@@ -2,27 +2,31 @@
 
 import config from '../../config';
 
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
+const UserSchema = new Schema({
 	id:String,
 	isExist: { type: Number, default: '1' },
 	username:String,
 	password:String
 });
-var UserModel = mongoose.model("Users",UserSchema) ;
+
+const UserModel = mongoose.model("Users",UserSchema) ;
+
+config.UserModel = UserModel;
+
 
 export function listuser() {
   return new Promise((resolve) => {
     setTimeout(() => {
       UserModel.find({isExist:1},function(err,doc){
-		if(err){
-			resolve({code:0,message:"查询数据库出错"});
-		} else{
-			resolve({code:1,message:"success",body:doc});
-		}     	
+    		if(err){
+    			resolve({code:0,message:"查询数据库出错"});
+    		} else{
+    			resolve({code:1,message:"success",body:doc});
+    		}     	
       })
     });
   });
@@ -32,10 +36,10 @@ export function listuser() {
 export function adduser(argumentuser) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      var user = new UserModel(argumentuser);
+      const user = new UserModel(argumentuser);
       console.log("model----"+argumentuser);
       console.log("model----"+user);
-      var condition = {
+      const condition = {
       	isExist:1,
       	username:argumentuser.username
       }

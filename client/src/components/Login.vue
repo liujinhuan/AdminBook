@@ -52,23 +52,32 @@
                 }
             }
         },
+        created () {
+            this.formCustom = Store.get("UserInfo") || {};
+        },
         methods: {
             handleSubmit (name) {
             	var self = this;
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        // this.$http.post("http://localhost:9000/login/login",user).then(response=>{
-                        //     console.log(response.body);
-                        //     var res = response.body;
-                        //     if(res.code==1){
-                                Store.set("Username",self.formCustom.username);
+                        this.$http.post("http://localhost:9000/login/login",this.formCustom).then(response=>{
+                            console.log(response.body);
+                            var res = response.body;
+                            if(res.code==1){
+                                this.$Notice.open({
+                                    title: "登录成功，已为您保存用户名密码",
+                                    duration:1
+                                });
+                                // this.$Message.success();
+                                Store.set("UserInfo",self.formCustom);
                                 this.$router.push('/home');
-                        //     }else{
-                        //         this.$Message.error(res.message);
-                        //     }
-                        // },response=>{
-                        //     this.$Message.error(response.body.message);
-                        // });
+                            }else{
+                                this.formCustom = {};
+                                this.$Message.error(res.message);
+                            }
+                        },response=>{
+                            this.$Message.error(response.body.message);
+                        });
                     } else {
                         this.$Message.error('表单验证失败!');
                     }

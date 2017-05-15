@@ -18,7 +18,7 @@
             }
         },
         created () {
-            this.username = Store.get("Username");
+            this.username = Store.get("UserInfo").username;
             this.isShowLogout = this.username===""?false:true;
         },
         methods:{

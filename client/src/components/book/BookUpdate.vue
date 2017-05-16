@@ -61,9 +61,7 @@
                         }, response => {
                             self.$Message.error(response.body.message);
                         });
-                    } else {
-                        self.$Message.error('表单验证失败!');
-                    }
+                    } 
                 })
             },
             back () {

@@ -20,7 +20,7 @@
 
 | Tech      | 版本   |   说明		|
 | ------------- |:-------------:|-------------:|
-| generator-koa2-rest | | 后端项目生成脚手架,依赖koa@next |
+|generator-koa2-rest | | 后端项目生成脚手架,依赖koa@next |
 |koa |	^2.0.0 	| koa版本 |
 |mongoose | ^4.9.9 | mongodb数据库 |
 |koa-bodyparser	| ^3.2.0	| http-post请求参数处理中间件 |

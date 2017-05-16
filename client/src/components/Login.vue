@@ -33,7 +33,9 @@
             const validatePassword = (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error('请输入密码'));
-                } else {
+                } else if(!(/^(\d){6,8}$/.test(value))){
+                    callback(new Error('请输入6-8位纯数字'));
+                }else {
                     callback();
                 }
             };
@@ -63,24 +65,27 @@
                     if (valid) {
                         this.$http.post(Url.login,this.formCustom).then(response=>{
                             console.log(response.body);
-                            var res = response.body;
+                            var res = response.body,
+                                message = res.message || "系统出错，请稍后再试";
                             if(res.code==1){
                                 this.$Notice.open({
                                     title: "登录成功，已为您保存用户名",
                                     duration:1
                                 });
-                                // this.$Message.success();
                                 Store.set("UserInfo",self.formCustom);
                                 this.$router.push('/home');
-                            }else{
+                            }else if(res.code==0){
                                 this.formCustom = {};
-                                this.$Message.error(res.message);
+                                this.$Message.error(message);
+                            }else if(res.code==2){
+                                this.formCustom.password = "";
+                                this.$Message.error(message);
+                            }else{
+                                this.$Message.error(message);
                             }
                         },response=>{
                             this.$Message.error(response.body.message);
                         });
-                    } else {
-                        this.$Message.error('表单验证失败!');
                     }
                 })
             }

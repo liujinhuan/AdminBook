@@ -6,9 +6,9 @@ import App from './App'
 import router from './router'
 
 import iView from 'iview'
-import 'iview/dist/styles/iview.css'
+import 'iview/dist/styles/iview.css' //引用iView css
 
-Vue.use(iView)
+Vue.use(iView) //引用iView组件
 Vue.use(VueResource)
 
 Vue.config.productionTip = false

@@ -1,7 +1,6 @@
 <template>
     <div class="login-content">
     	<Form ref="formCustom" :model="formCustom" :rules="ruleCustom" :label-width="80">
-
 	        <Form-item label="用户名" prop="username">
 	            <Input type="text" v-model="formCustom.username"></Input>
 	        </Form-item>

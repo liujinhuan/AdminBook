@@ -11,7 +11,7 @@
                         <Menu-item name="booklist">查看</Menu-item>
                         <Menu-item name="bookadd">添加</Menu-item>
                     </Submenu>
-                    <Submenu name="userManager">
+                    <Submenu name="userManager" v-if="isShowUserManagement">
                         <template slot="title">
                             <Icon type="ios-navigate"></Icon>
                             用户管理
@@ -33,12 +33,20 @@
     </div>
 </template>
 <script>
+    import Store from '@/utils/store'
     export default {
         data () {
             return {
+                isShowUserManagement:false
             }
         },
         components:{
+        },
+        created () {
+            var username = Store.get("UserInfo").username;
+            if(username && username === "admin"){
+                this.isShowUserManagement = true;
+            }
         },
         methods : {
             onSelect (name){

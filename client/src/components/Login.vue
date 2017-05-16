@@ -7,10 +7,10 @@
 	        </Form-item>
 	        <Form-item label="密码" prop="password">
 	            <Input type="password" v-model="formCustom.password"></Input>
-	        </Form-item><!-- 
+	        </Form-item>
 	        <Form-item label="提示">
-	            admin/admin为管理员身份，其余为普通用户
-	        </Form-item> -->
+	            admin/123456为管理员,可见用户管理；其余为普通用户，仅可见图书管理
+	        </Form-item>
 	        <Form-item>
 	            <Button type="primary" @click="handleSubmit('formCustom')">提交</Button>
 	        </Form-item>

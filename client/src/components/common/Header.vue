@@ -9,7 +9,7 @@
     </div>
 </template>
 <script>
-   import Store from '@/utils/store'
+    import Store from '@/utils/store'
     export default {
         data () {
             return {

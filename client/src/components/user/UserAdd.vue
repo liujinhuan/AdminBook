@@ -23,6 +23,22 @@
 
     export default {
         data () {
+            const validateUsername = (rule,value,callback)=>{
+                if(value===""){
+                    callback(new Error("请输入用户名"))
+                }else{
+                    callback();
+                }
+            };
+            const validatePassword = (rule,value,callback)=>{
+                if(value===""){
+                    callback(new Error("请输入密码"))
+                }else if(!(/^(\d){6,8}$/.test(value))){
+                    callback(new Error('请输入6-8位纯数字'));
+                }else {
+                    callback();
+                }
+            };
             return {
                 users:[],
                 formValidate: {
@@ -32,10 +48,10 @@
                 },
                 ruleValidate: {
                     username: [
-                        { required: true, message: '用户名不能为空', trigger: 'blur' }
+                        { validator: validateUsername, trigger: 'blur' }
                     ],
                     password: [
-                        { required: true, message: '密码不能为空', trigger: 'blur' }
+                        { validator: validatePassword, trigger: 'blur' }
                     ]/*,
                     passwordagain: [
                         { required: true, message: '确认密码不能为空', trigger: 'blur' }
@@ -64,9 +80,7 @@
                         }, response => {
                             self.$Message.error(response.body.message);
                         });
-                    } else {
-                        this.$Message.error('表单验证失败!');
-                    }
+                    } 
                 })
             },
             handleReset (name) {

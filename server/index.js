@@ -3,6 +3,7 @@ require('babel-polyfill');
 const config = require('./src/config');
 const app = require('./src/server');
 const mongoose = require('mongoose');
+// mongoose.Promise = global.Promise;
 const db = mongoose.connect("mongodb://"+config.mongoIp+":"+config.mongoPort+"/"+config.mongoDbName);
 
 // http://www.marcusoft.net/2015/10/eaddrinuse-when-watching-tests-with-mocha-and-supertest.html

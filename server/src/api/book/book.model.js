@@ -3,7 +3,6 @@
 import config from '../../config';
 
 var mongoose = require("mongoose");
-mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 var BookSchema = new Schema({
   id:String,

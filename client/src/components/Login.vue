@@ -72,7 +72,7 @@
                                     duration:1
                                 });
                                 Store.set("UserInfo",self.formCustom);
-                                this.$router.push({name:'home'});
+                                this.$router.push('/home');
                             }else if(res.code==0){
                                 this.formCustom = {};
                                 this.$Message.error(message);

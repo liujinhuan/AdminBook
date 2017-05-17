@@ -8,7 +8,7 @@
 	            <Input type="password" v-model="formCustom.password"></Input>
 	        </Form-item>
 	        <Form-item label="提示">
-	            admin/123456为管理员,可见用户管理；其余为普通用户，仅可见图书管理
+	            admin/111111为管理员,可见用户管理；其余为普通用户，仅可见图书管理
 	        </Form-item>
 	        <Form-item>
 	            <Button type="primary" @click="handleSubmit('formCustom')">提交</Button>
@@ -72,7 +72,7 @@
                                     duration:1
                                 });
                                 Store.set("UserInfo",self.formCustom);
-                                this.$router.push('/home');
+                                this.$router.push({name:'home'});
                             }else if(res.code==0){
                                 this.formCustom = {};
                                 this.$Message.error(message);

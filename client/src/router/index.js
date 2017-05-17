@@ -25,10 +25,10 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: Home,
-      children: [
+      children: [ //如下路由均为home的子路由,使其可以显示在home的路由之下
         {
           path: '/',
-          name: '/',
+          name: 'home',
           component: BookList
         },
         {

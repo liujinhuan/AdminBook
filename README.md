@@ -6,7 +6,7 @@
 
 > 前端框架采用vue，通过脚手架`vue-cli`生成项目基础目录，融合iView UI框架，vue-router路由，vue-resource请求中间件等实现管理系统。各技术版本及说明如下：
 
-| Tech      | 版本   |   说明		|
+| Dependence      | Version   |   Description		|
 | ------------- |:-------------:|-------------:|
 |vue-cli | | 前端框架的脚手架工具|
 |vue |	^2.2.6 	| vue版本 |
@@ -19,7 +19,7 @@
 
 > 后端采用koa框架，通过脚手架`generator-koa2-rest`生成项目基础目录，融合mongodb数据库，koa-router路由，koa-cors跨域处理，koa-bodyparser post请求处理等中间件实现管理后台服务端。各技术版本及说明如下：
 
-| Tech      | 版本   |   说明		|
+| Dependence      | Version   |   Description	|
 | ------------- |:-------------:|-------------:|
 |generator-koa2-rest | | 后端项目生成脚手架,依赖koa@next |
 |koa |	^2.0.0 	| koa版本 |
